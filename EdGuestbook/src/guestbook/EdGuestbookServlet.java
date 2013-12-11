@@ -17,6 +17,7 @@ public class EdGuestbookServlet extends HttpServlet {
         if (user != null) {
             resp.setContentType("text/plain");
             resp.getWriter().println("Hello, " + user.getNickname());
+            userService.createLogoutURL(req.getRequestURI());
         } else {
             resp.sendRedirect(userService.createLoginURL(req.getRequestURI()));
         }
